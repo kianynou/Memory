@@ -27,10 +27,6 @@ playerNumberElt.addEventListener("change", function(){
     }
 ); 
 //récupérer le nombre choisi par le joueur --------------------------
-<<<<<<< HEAD
-=======
-let cardsNumberChoice = 12;
->>>>>>> cd989295a1b80e40b8869a07f6b19cde11cb62ab
 
 /*let cardsNumberChoice = 4;*/
 
@@ -90,12 +86,7 @@ for (let i=0; i<cardsNumberChoice; i++){
             if(srcImgTab.length===2){
                 // A partir de 2 cartes retournées, une alert apparaît
                  if(srcImgTab[0]===srcImgTab[1]){
-<<<<<<< HEAD
-                     alert('bravo ! Joue encore !');
-                     srcImgTab=[];
-=======
                      setTimeout(alert, 300,'Ça trou l\'cul!');
->>>>>>> cd989295a1b80e40b8869a07f6b19cde11cb62ab
                      score += 1;}
                  else{
                      setTimeout(alert, 300,'Gros naze!');
