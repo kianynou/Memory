@@ -87,3 +87,16 @@
     transition: transform 0.8s;
     transform-style: preserve-3d;
   }
+  .frontReturned {
+   position: absolute;
+   top: 0;
+   left: 0;
+   backface-visibility: hidden;
+   }
+   .backReturned {
+      position: relative;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
+      transform: rotateY(-180deg);
+   }
