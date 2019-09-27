@@ -15,7 +15,7 @@ const frontImages = [
     ];
 
 //récupérer le nombre choisi par le joueur --------------------------
-let cardsNumberChoice = 2;
+let cardsNumberChoice = 12;
 
 
 // Génération de l'affichage aléatoire ------------------------------
@@ -73,19 +73,14 @@ for (let i=0; i<cardsNumberChoice; i++){
             if(srcImgTab.length===2){
                 // A partir de 2 cartes retournées, une alert apparaît
                  if(srcImgTab[0]===srcImgTab[1]){
-                     alert('bravo !');
+                     setTimeout(alert, 300,'Ça trou l\'cul!');
                      score += 1;}
                  else{
-                     alert('bouh!');
+                     setTimeout(alert, 300,'Gros naze!');
                      cardinnerElt[i].style.transform = "rotateY(180deg)";
 
                  }
              }
-                 // Plus de 2 cartes, une alerte averti que c'est 2 maxi !
-             else if (srcImgTab.length>2){
-                 alert('2 cartes maxi SVP !');
-             }    
-
     
         });
     }
