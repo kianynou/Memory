@@ -105,36 +105,28 @@
      border-radius: 8%;
      width: 180px;
  }
-
+ .card-face {
+   width: 100%;
+   height: 100%;
+   backface-visibility: hidden;
+ }
  .front {
-    position: relative;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
-    transform: rotateY(180deg);
+   position: relative;
+   transform: rotateY(180deg);
  }
  .back {
-    position: absolute;
     top: 0;
-    left: 0;
-    backface-visibility: hidden;
+    position: absolute;
  }
  .flip-card-inner {
     position: relative;
     text-align: center;
+    cursor: pointer;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
   }
-  .frontReturned {
-   position: absolute;
-   top: 0;
-   left: 0;
-   backface-visibility: hidden;
-   }
-   .backReturned {
-      position: relative;
-      top: 0;
-      left: 0;
-      backface-visibility: hidden;
-      transform: rotateY(-180deg);
-   }
+  .flip-card-inner.is-flipped {
+     transform: rotateY(180deg);
+  }
