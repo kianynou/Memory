@@ -52,15 +52,16 @@ function randomDisplay(cardsNumber){
         }
         //affichage aléatoire des cartes
         cardsElt.innerHTML += `<div class="card" id="card">
-            <div class="flip-card-inner" id="cardinner${i}">
-                <div class="back" id="back${i}">
-                    <img src="${backImage}" class="border">
-                </div>
-                <div class="front" id="front${i}">
-                    <img src="images/carte${randomNumbers[i]}.jpg" class="border" id="card${i}">
-                </div>
-            </div>
-        </div>`;}
+                                    <div class="flip-card-inner" id="cardinner${i}">
+                                        <div class="card-face back" id="back${i}">
+                                            <img src="${backImage}" class="border">
+                                        </div>
+                                        <div class="card-face front" id="front${i}">
+                                            <img src="images/carte${randomNumbers[i]}.jpg" class="border" id="card${i}">
+                                        </div>
+                                    </div>
+                                </div>`;
+        }
         
         
 
@@ -68,51 +69,34 @@ function randomDisplay(cardsNumber){
     
 
 // Fonction Flip -------------------------------------------------
-let returnImgTab = [];
-let frontTab = [];
-let backTab = [];
 let cardinnerElt = [];
+let cardinnerArray = [];
 for (let i=0; i<cardsNumberChoice; i++){
     cardinnerElt[i] = document.getElementById(`cardinner${i}`);
 }
-console.log(cardinnerElt);
+function flipBack () {
+    cardinnerArray[0].classList.toggle('is-flipped');
+    cardinnerArray[1].classList.toggle('is-flipped');
+}
+for (let i=0; i<cardsNumberChoice; i++) {
+    cardinnerElt[i].addEventListener('click', function() {
+        cardinnerElt[i].classList.toggle('is-flipped');   
+    let srcImg = document.getElementById('card'+i).src;
+    cardinnerArray.push(cardinnerElt[i]);
+    srcImgTab.push(srcImg);
 
-for (let i=0; i<cardsNumberChoice; i++){
-    cardinnerElt[i].addEventListener('click', function flip(){ 
-        cardinnerElt[i].style.transform = "rotateY(180deg)";
-        
-        
-        let srcImg = document.getElementById('card'+i).src;
-        let frontIdImg = document.getElementById('front'+i);
-        let backIdImg = document.getElementById('back'+i);
-           srcImgTab.push(srcImg);
-            returnImgTab.push(cardinnerElt[i]);
-            frontTab.push(frontIdImg);
-            backTab.push(backIdImg);
-            console.log(srcImgTab);
-            console.log(returnImgTab);
-
-            if(srcImgTab.length===2){
-                // A partir de 2 cartes retournées, une alert apparaît
-                 if(srcImgTab[0]===srcImgTab[1]){
-                     setTimeout(alert, 300,'Ça trou l\'cul!');
-                     score += 1;}
-                 else{
-                     setTimeout(alert, 300,'Gros naze!');
-                     cardinnerElt[i].style.transform = "rotateY(180deg)";
-
-                     frontTab[0].setAttribute('class', 'frontReturned');
-                     backTab[0].setAttribute('class', 'backReturned');
-                     frontTab[1].setAttribute('class', 'frontReturned');
-                     backTab[1].setAttribute('class', 'backReturned');
-                     returnImgTab[0].style.transform = "rotateY(-180deg)";
-                     returnImgTab[1].style.transform = "rotateY(-180deg)";
-                 }
-                 
-             }
-    
-        });
+    if(srcImgTab.length===2){
+        // A partir de 2 cartes retournées, une alert apparaît
+        if(srcImgTab[0] === srcImgTab[1]) {
+            setTimeout(alert, 1000,'Ça trou l\'cul!');
+            score += 1;}
+        else{
+            setTimeout(flipBack, 1000);
+            setTimeout(alert, 500,'Gros naze!');
+            scrImgTab=[];
+        }
     }
-
-
+    
+    });
+}
 }
