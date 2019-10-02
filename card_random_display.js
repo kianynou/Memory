@@ -46,13 +46,21 @@ turnCounter = 0;
 let playerNumberElt = document.getElementById("playerNumber");
 let askForNumberElt = document.getElementById("askForNumber");
 let cardsNumberChoice;
-
 playerNumberElt.addEventListener("change", function(){
     askForNumberElt.style.display = "none";
     if(event.target.value){
     cardsNumberChoice = event.target.value;
     randomDisplay(cardsNumberChoice);}
+    if (cardsNumberChoice == 6) {
+        cardsElt.style.width = "45%";
+    } else if (cardsNumberChoice == 8 || cardsNumberChoice == 12 || cardsNumberChoice == 16) {
+        cardsElt.style.width = "60%";
+    } else if (cardsNumberChoice == 10 || cardsNumberChoice == 20) {
+        cardsElt.style.width = "80%";
+    } else if (cardsNumberChoice == 18) {
+        cardsElt.style.width = "100%";
     }
+}
 ); 
 
 
