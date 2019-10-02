@@ -1,4 +1,4 @@
-//Les images back et front -----------------------------------------
+//Back and Front Pictures -----------------------------------------
 const backImage = 'images/back.jpg';
 
 const frontImages = [
@@ -16,7 +16,7 @@ const frontImages = [
 
 let cardsElt = document.getElementById('cards');
 
-//init Joueurs
+//Players Init
 class Player{
     score = 0;
     constructor(isPlaying){
@@ -40,7 +40,7 @@ let frameScore2Elt = document.getElementById('frameScore2');
 let turnCounterElt = document.getElementById('turn');
 turnCounter = 0;
 
-//récupérer combien de joueurs  -------------------------------------
+//How many players ??  -------------------------------------
 /*
 let = document.getElementById(" ");
 let askForPlayer = document.getElementById("askForPlayerr");
@@ -54,7 +54,7 @@ playerNumberElt.addEventListener("change", function(){
 }
 ); 
 */
-//récupérer le nombre choisi par le joueur --------------------------
+//How many cards ?? ----------------------------------------
 
 let howManyCardsElt = document.getElementById("howManyCards");
 let askForNumberElt = document.getElementById("askForNumber");
@@ -63,20 +63,20 @@ howManyCardsElt.addEventListener("change", function(){
     askForNumberElt.style.display = "none";
     if(event.target.value){
     cardsNumberChoice = event.target.value;
-    /*randomDisplay(cardsNumberChoice);*/
+    randomDisplay(cardsNumberChoice);
     console.log(cardsNumberChoice);}
     
 }
 ); 
 
 
-// Génération de l'affichage aléatoire ------------------------------
+// Random display -------------------------------------------
 function randomDisplay(cardsNumber){
 
     let randomNumbers =[];
 
     
-        //Génération d'un tableau de nombres aléatoires de 1 à cardsNumber
+    //Random numbers Array generation
     for(let i = 0; i < cardsNumber ; i++){
         let number = Math.round((Math.random() * (cardsNumber-1)) + 1);
         while(randomNumbers.includes(number)){
@@ -84,12 +84,12 @@ function randomDisplay(cardsNumber){
         }
         randomNumbers.push(number);
     }
-        //On divise par 2 
+    //divide by 2 
     for(let i = 0; i < cardsNumber; i++){
         if (randomNumbers[i] > (cardsNumber/2)){
             randomNumbers[i] = randomNumbers[i] - (cardsNumber/2);       
         }
-        //affichage aléatoire des cartes
+        //Cards display
         cardsElt.innerHTML += `<div class="card" id="card">
 
                                     <div class="flip-card-inner" id="cardinner${i}">
@@ -101,9 +101,13 @@ function randomDisplay(cardsNumber){
                                         </div>
                                     </div>
                                 </div>`;
-  //affichage du cadre coloré Player 1
-        frameScore1Elt.style.backgroundColor = "#78f875";
-        }
+
+        
+        
+    }
+
+    //Colored Frame Player 1 display
+    frameScore1Elt.style.backgroundColor = "#78f875";
 
         
         
@@ -111,71 +115,71 @@ function randomDisplay(cardsNumber){
 
     
 
-// Fonction Flip -------------------------------------------------
+// THE GAME ! ------------------------------------------------
 let cardinnerElt = [];
 let cardinnerArray = [];
+
 for (let i=0; i<cardsNumberChoice; i++){
     cardinnerElt[i] = document.getElementById(`cardinner${i}`);
 }
 
 
-
 function flipBack () {
     cardinnerArray[0].classList.toggle('is-flipped');
     cardinnerArray[1].classList.toggle('is-flipped');
+    cardinnerArray = [];  
 }
+
 for (let i=0; i<cardsNumberChoice; i++) {
     cardinnerElt[i].addEventListener('click', function() {
-        cardinnerElt[i].classList.toggle('is-flipped');   
+    cardinnerElt[i].classList.toggle('is-flipped');   
     let srcImg = document.getElementById('card'+i).src;
     cardinnerArray.push(cardinnerElt[i]);
     srcImgTab.push(srcImg);
 
+    // 2 cards returned
+    if(srcImgTab.length===2){
+        turnCounter += 1;
         
-            if(srcImgTab.length===2){
-                turnCounter += 1;
-                // A partir de 2 cartes retournées, une alert apparaît
-                 if(srcImgTab[0]===srcImgTab[1]){
-                     setTimeout(alert, 500,'Ça trou l\'cul!');
-                     if(player1.isPlaying=== true){
-                        player1.score += 1;
-                        }
-                     else{
-                        player2.score += 1;
-                        }
-                    }
-                    
-                 else{
-                   setTimeout(flipBack, 1000);
-                     setTimeout(alert, 500,'Gros naze!');
-                     
+        //If the same
+        if(srcImgTab[0]===srcImgTab[1]){
+            setTimeout(alert, 500,'Ça trou l\'cul!');
+            cardinnerArray = []; 
 
-                    
-                     if(player1.isPlaying){
-                        player1.isPlaying = false;
-                        player2.isPlaying = true;
-                        frameScore2Elt.style.backgroundColor = "#78f875";
-                        frameScore1Elt.style.backgroundColor = "#D6EAF8";}
-                     else{
-                        player1.isPlaying = true;
-                        player2.isPlaying = false;
-                        frameScore1Elt.style.backgroundColor = "#78f875";
-                        frameScore2Elt.style.backgroundColor = "#D6EAF8";}
-                        
-                    console.log(player1.isPlaying);
+            if(player1.isPlaying=== true){
+                player1.score += 1;
+            }
+            else{
+                player2.score += 1;
+            }
+        }
+        //If not the same          
+        else{
+            setTimeout(flipBack, 1000);
+            setTimeout(alert, 500,'Gros naze!');
+                     
+            if(player1.isPlaying){
+                player1.isPlaying = false;
+                player2.isPlaying = true;
+                frameScore2Elt.style.backgroundColor = "#78f875";
+                frameScore1Elt.style.backgroundColor = "#D6EAF8";}
+            else{
+                player1.isPlaying = true;
+                player2.isPlaying = false;
+                frameScore1Elt.style.backgroundColor = "#78f875";
+                frameScore2Elt.style.backgroundColor = "#D6EAF8";}
+            }
+            srcImgTab = [];
                 
-                 }
-                srcImgTab = [];
-                scorePlayer1Elt.innerHTML = `${player1.score}`;
-                scorePlayer2Elt.innerHTML = `${player2.score}`;
-                turnCounterElt.innerHTML = `${turnCounter}`;
-             }
+            scorePlayer1Elt.innerHTML = `${player1.score}`;
+            scorePlayer2Elt.innerHTML = `${player2.score}`;
+            turnCounterElt.innerHTML = `${turnCounter}`;
+        }      
              
-          
-        });
+    });
 
     }
     
-    });
 }
-}
+
+
