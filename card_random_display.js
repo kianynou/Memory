@@ -129,6 +129,18 @@ function flipBack () {
     cardinnerArray[1].classList.toggle('is-flipped');
     cardinnerArray = [];  
 }
+function notTheSameCard() {
+    if (cardinnerArray[0] === cardinnerArray[1]) {
+        cardinnerArray = [];
+        srcImgTab = [];
+        alert(`You can't select two times the same card`);
+    }
+}
+function isItOver () {
+    if (player1.score + player2.score === cardsNumberChoice / 2) {
+        setTimeout(alert, 600, 'You finished the game');
+    }
+}
 
 for (let i=0; i<cardsNumberChoice; i++) {
     cardinnerElt[i].addEventListener('click', function() {
@@ -136,6 +148,7 @@ for (let i=0; i<cardsNumberChoice; i++) {
     let srcImg = document.getElementById('card'+i).src;
     cardinnerArray.push(cardinnerElt[i]);
     srcImgTab.push(srcImg);
+    notTheSameCard();
 
     // 2 cards returned
     if(srcImgTab.length===2){
@@ -152,6 +165,7 @@ for (let i=0; i<cardsNumberChoice; i++) {
             else{
                 player2.score += 1;
             }
+        isItOver();
         }
         //If not the same          
         else{
