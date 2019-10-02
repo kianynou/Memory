@@ -63,7 +63,7 @@ howManyCardsElt.addEventListener("change", function(){
     askForNumberElt.style.display = "none";
     if(event.target.value){
     cardsNumberChoice = event.target.value;
-    /*randomDisplay(cardsNumberChoice);*/
+    randomDisplay(cardsNumberChoice);
     console.log(cardsNumberChoice);}
     
 }
@@ -176,6 +176,6 @@ for (let i=0; i<cardsNumberChoice; i++) {
 
     }
     
-    });
-}
-}
+    }
+
+
