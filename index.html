@@ -9,36 +9,39 @@
 </head>
 <body>
     <div class="container">
-       <div class="container1" id="cards">
+       <div class="container1" >
+            <div class="container3" id="cards">
+                <div id="askForNumber" class="acces">
+                    <div><img src="images/titre.png" alt="Title"></div>
+                    <label for="howManyCards">Choose a number of cards:</label>
+                    <select id="howManyCards" class="selecteur">
+                    <option value="Choose here" selected>Choose here</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</value>
+                    <option value="12">14</value>
+                    <option value="16">16</value>
+                    <option value="18">18</value>
+                    <option value="20">20</value>
 
-            <div id="askForNumber">
-                <label for="playerNumber">Choose a number of cards:</label>
-                <select id="playerNumber">
-                  <option value="Choose here" selected>Choose here</option>
-                  <option value="6">6</option>
-                  <option value="8">8</option>
-                  <option value="10">10</value>
-                  <option value="12">12</value>
-                  <option value="14">14</value>
-                  <option value="16">16</value>
-                  <option value="18">18</value>
-                  <option value="20">20</value>
-                </select>
+                    </select>
+                </div>
             </div>
-
        </div> 
        <div class="container2">
-           <div class="player">
-               <h2>Player 1</h2>
-               <p>0</p>
+           <div class="player" id='frameScore1'>
+               <h2 id=>Player 1</h2>
+               <p id="scorePlayer1">0</p>
         </div>
-           <div class="player">
+           <div class="player" id='frameScore2'>
                <h2>Player 2</h2>
-               <p>0</p>
+               <p id ="scorePlayer2">0</p>
             </div>
            <div class="score">
-               <h2>Score</h2>
-               <p>0</p>
+               <h2>Laps</h2>
+               <p id = "turn">0</p>
             </div>
        </div>
     </div>   

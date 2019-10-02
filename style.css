@@ -2,9 +2,16 @@
     margin: 0;
     padding: 0;
  }
+ body{
+    background-color: #85C1E9;
+    color: #ff8100;
+ }
  h2{
     color: #ff8100;
     padding: 5px;
+ }
+ h3{
+    padding-top: 30px;
  }
  p{
     font-size: 50px;
@@ -16,16 +23,47 @@
     display: flex;
     flex-direction: row;
  }
+ .acces{
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   justify-content: center;
+   height: 60%;
+    width: 70%;
+    background-color: #D6EAF8;
+    border-radius: 8px;
+    border: solid 10px #ff8100;
+
+ }
+ .acces img{
+    padding-top: 30px;
+ }
+ .selecteur{
+    text-align: center;
+    width: 30%;
+   margin: auto;
+   margin-top: 0;
+   
+    
+ }
  .container1{
     display: flex;
     flex-direction: row;
     height: 100vh;
     width: 70%;
-    background-image: url();
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
  }
+ .container3{
+   display: flex;
+   flex-direction: row;
+   width: 100%;
+   background-image: url();
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+}
  .card{
     margin: 1%;
     white-space: nowrap;
@@ -39,7 +77,7 @@
     display: flex;
     height: 100vh;
     width: 30%;
-    background-image: url();
+    background-color: #85C1E9 ;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -49,7 +87,7 @@
     width: 80%;
     margin: 1%;
     text-align: center;
-    background-color: #b8e994;
+    background-color: #D6EAF8;
     border-radius: 8px;
     border: solid 10px #ff8100;
  }
@@ -58,7 +96,7 @@
     width: 80%;
     margin: 1%;
     text-align: center;
-    background-color: #b8e994;
+    background-color: #D6EAF8;
     border-radius: 8px;
     border: solid 10px #ff8100;
  }
