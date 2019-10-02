@@ -43,10 +43,10 @@ turnCounter = 0;
 
 //récupérer le nombre choisi par le joueur --------------------------
 
-let playerNumberElt = document.getElementById("playerNumber");
+let howManyCardsElt = document.getElementById("howManyCards");
 let askForNumberElt = document.getElementById("askForNumber");
 let cardsNumberChoice;
-playerNumberElt.addEventListener("change", function(){
+howManyCardsElt.addEventListener("change", function(){
     askForNumberElt.style.display = "none";
     if(event.target.value){
     cardsNumberChoice = event.target.value;
