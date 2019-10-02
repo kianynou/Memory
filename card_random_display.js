@@ -40,26 +40,32 @@ let frameScore2Elt = document.getElementById('frameScore2');
 let turnCounterElt = document.getElementById('turn');
 turnCounter = 0;
 
+//récupérer combien de joueurs  -------------------------------------
+/*
+let = document.getElementById(" ");
+let askForPlayer = document.getElementById("askForPlayerr");
 
-//récupérer le nombre choisi par le joueur --------------------------
-
-let playerNumberElt = document.getElementById("playerNumber");
-let askForNumberElt = document.getElementById("askForNumber");
-let cardsNumberChoice;
 playerNumberElt.addEventListener("change", function(){
     askForNumberElt.style.display = "none";
     if(event.target.value){
     cardsNumberChoice = event.target.value;
     randomDisplay(cardsNumberChoice);}
-    if (cardsNumberChoice == 6) {
-        cardsElt.style.width = "45%";
-    } else if (cardsNumberChoice == 8 || cardsNumberChoice == 12 || cardsNumberChoice == 16) {
-        cardsElt.style.width = "60%";
-    } else if (cardsNumberChoice == 10 || cardsNumberChoice == 20) {
-        cardsElt.style.width = "80%";
-    } else if (cardsNumberChoice == 18) {
-        cardsElt.style.width = "100%";
-    }
+    
+}
+); 
+*/
+//récupérer le nombre choisi par le joueur --------------------------
+
+let howManyCardsElt = document.getElementById("howManyCards");
+let askForNumberElt = document.getElementById("askForNumber");
+let cardsNumberChoice;
+howManyCardsElt.addEventListener("change", function(){
+    askForNumberElt.style.display = "none";
+    if(event.target.value){
+    cardsNumberChoice = event.target.value;
+    /*randomDisplay(cardsNumberChoice);*/
+    console.log(cardsNumberChoice);}
+    
 }
 ); 
 
