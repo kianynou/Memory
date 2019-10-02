@@ -14,9 +14,21 @@ const frontImages = [
     'images/carte10.jpg',
     ];
 
-//récupérer le nombre choisi par le joueur --------------------------
-let cardsNumberChoice = 2;
+cardsElt = document.getElementById('cards');
+playerNumberElt = document.getElementById("playerNumber");
+askForNumberElt = document.getElementById("askForNumber");
+let cardsNumberChoice;
 
+playerNumberElt.addEventListener("change", function(){
+    askForNumberElt.style.display = "none";
+    if(event.target.value){
+    cardsNumberChoice = event.target.value;
+    randomDisplay(cardsNumberChoice);}
+    }
+); 
+//récupérer le nombre choisi par le joueur --------------------------
+
+/*let cardsNumberChoice = 4;*/
 
 // Génération de l'affichage aléatoire ------------------------------
 function randomDisplay(cardsNumber){
@@ -24,7 +36,7 @@ function randomDisplay(cardsNumber){
 
     let randomNumbers =[];
 
-    cardsElt = document.getElementById('cards');
+    
         //Génération d'un tableau de nombres aléatoires de 1 à cardsNumber
     for(let i = 0; i < cardsNumber ; i++){
         let number = Math.round((Math.random() * (cardsNumber-1)) + 1);
@@ -40,52 +52,51 @@ function randomDisplay(cardsNumber){
         }
         //affichage aléatoire des cartes
         cardsElt.innerHTML += `<div class="card" id="card">
-            <div class="flip-card-inner" id="cardinner${i}">
-                <div class="back">
-                    <img src="${backImage}" class="border">
-                </div>
-                <div class="front">
-                    <img src="images/carte${randomNumbers[i]}.jpg" class="border" id="card${i}">
-                </div>
-            </div>
-        </div>`;}
+                                    <div class="flip-card-inner" id="cardinner${i}">
+                                        <div class="card-face back" id="back${i}">
+                                            <img src="${backImage}" class="border">
+                                        </div>
+                                        <div class="card-face front" id="front${i}">
+                                            <img src="images/carte${randomNumbers[i]}.jpg" class="border" id="card${i}">
+                                        </div>
+                                    </div>
+                                </div>`;
+        }
         
-}
+        
 
-randomDisplay(cardsNumberChoice);
 
+    
 
 // Fonction Flip -------------------------------------------------
-
 let cardinnerElt = [];
+let cardinnerArray = [];
 for (let i=0; i<cardsNumberChoice; i++){
     cardinnerElt[i] = document.getElementById(`cardinner${i}`);
 }
+function flipBack () {
+    cardinnerArray[0].classList.toggle('is-flipped');
+    cardinnerArray[1].classList.toggle('is-flipped');
+}
+for (let i=0; i<cardsNumberChoice; i++) {
+    cardinnerElt[i].addEventListener('click', function() {
+        cardinnerElt[i].classList.toggle('is-flipped');   
+    let srcImg = document.getElementById('card'+i).src;
+    cardinnerArray.push(cardinnerElt[i]);
+    srcImgTab.push(srcImg);
 
-for (let i=0; i<cardsNumberChoice; i++){
-    cardinnerElt[i].addEventListener('click', function flip(){ 
-        cardinnerElt[i].style.transform = "rotateY(180deg)";
-        
-        let srcImg = document.getElementById('card'+i).src;
-           srcImgTab.push(srcImg);
-            console.log(srcImgTab);
-
-            if(srcImgTab.length===2){
-                // A partir de 2 cartes retournées, une alert apparaît
-                 if(srcImgTab[0]===srcImgTab[1]){
-                     alert('bravo !');
-                     score += 1;}
-                 else{
-                     alert('bouh!');
-                     cardinnerElt[i].style.transform = "rotateY(180deg)";
-
-                 }
-             }
-                 // Plus de 2 cartes, une alerte averti que c'est 2 maxi !
-             else if (srcImgTab.length>2){
-                 alert('2 cartes maxi SVP !');
-             }    
-
-    
-        });
+    if(srcImgTab.length===2){
+        // A partir de 2 cartes retournées, une alert apparaît
+        if(srcImgTab[0] === srcImgTab[1]) {
+            setTimeout(alert, 1000,'Ça trou l\'cul!');
+            score += 1;}
+        else{
+            setTimeout(flipBack, 1000);
+            setTimeout(alert, 500,'Gros naze!');
+            scrImgTab=[];
+        }
     }
+    
+    });
+}
+}
