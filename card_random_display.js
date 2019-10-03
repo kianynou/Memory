@@ -40,34 +40,45 @@ let frameScore2Elt = document.getElementById('frameScore2');
 let turnCounterElt = document.getElementById('turn');
 turnCounter = 0;
 
-//How many players ??  -------------------------------------
-/*
-let = document.getElementById(" ");
-let askForPlayer = document.getElementById("askForPlayerr");
+// Welcome display
+let welcomeElt = document.getElementById('welcome');
+let gameElt = document.getElementById('game');
 
-playerNumberElt.addEventListener("change", function(){
-    askForNumberElt.style.display = "none";
+gameElt.style.display = 'none';
+//How many players ??  -------------------------------------
+
+let howManyPlayersElt = document.getElementById("howManyPlayers");
+let playersNumberChoice;
+howManyPlayersElt.addEventListener("change", function(){
     if(event.target.value){
-    cardsNumberChoice = event.target.value;
-    randomDisplay(cardsNumberChoice);}
+        playersNumberChoice = event.target.value;
+        return playersNumberChoice;}
+});
     
-}
-); 
-*/
 //How many cards ?? ----------------------------------------
 
 let howManyCardsElt = document.getElementById("howManyCards");
-let askForNumberElt = document.getElementById("askForNumber");
 let cardsNumberChoice;
 howManyCardsElt.addEventListener("change", function(){
-    askForNumberElt.style.display = "none";
     if(event.target.value){
     cardsNumberChoice = event.target.value;
-    randomDisplay(cardsNumberChoice);
-    console.log(cardsNumberChoice);}
+    //randomDisplay(cardsNumberChoice);
+    return cardsNumberChoice ;}
     
-}
-); 
+}); 
+
+//Play button
+let askForNumberElt = document.getElementById("askForNumber");
+let playElt = document.getElementById("play");
+
+playElt.addEventListener("click", function(){
+    if(!isNaN(cardsNumberChoice) && !isNaN(playersNumberChoice)){
+        gameElt.style.display = 'flex';
+        askForNumberElt.style.display = "none";
+        randomDisplay(cardsNumberChoice);}
+    else{
+        alert('Euh, tu peux choisir tes options comme y faut steu\'plait ?');}
+}); 
 
 
 // Random display -------------------------------------------

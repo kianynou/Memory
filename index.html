@@ -8,31 +8,35 @@
     <title>Memory South-Park</title>
 </head>
 <body>
-    <div class="container">
+    <div id='welcome'>
+        
+        <div id="askForNumber" class="acces">
+            
+            <label for="howManyCards"><h1>Choose options :</h1></label>
+            <select id="howManyCards" class="selecteur">
+                <option value="Choose here" selected>Number of cards</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</value>
+                <option value="12">14</value>
+                <option value="16">16</value>
+                <option value="18">18</value>
+                <option value="20">20</value>
+            </select>
+            <select id="howManyPlayers" class="selecteur">
+                <option value="Choose here" selected>Number of player</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                </select>
+            <button class="button" id="play">Let's play !!</button>
+        </div>
+    </div>
+    <div class="container" id="game">
        <div class="container1" >
             <div class="container3" id="cards">
-                <div id="askForNumber" class="acces">
-                    <div><img src="images/titre.png" alt="Title"></div>
-                    <label for="howManyCards">Choose options:</label>
-                    <select id="howManyCards" class="selecteur">
-                    <option value="Choose here" selected>Number of cards</option>
-                    <option value="4">4</option>
-                    <option value="6">6</option>
-                    <option value="8">8</option>
-                    <option value="10">10</option>
-                    <option value="12">12</value>
-                    <option value="12">14</value>
-                    <option value="16">16</value>
-                    <option value="18">18</value>
-                    <option value="20">20</value>
-                    </select>
-                    <select id="howManyPlayers" class="selecteur">
-                        <option value="Choose here" selected>Number of player</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        </select>
-                    <button class="button">Play</button>
-                </div>
+                
             </div>
        </div> 
        <div class="container2">
