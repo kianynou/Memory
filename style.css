@@ -99,15 +99,7 @@
     align-items: center;
    
  }
- .container3{
-   display: flex;
-   flex-direction: row;
-   width: 100%;
-   background-image: url();
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center;
-}
+
  .card{
     margin: 1%;
     white-space: nowrap;
@@ -146,7 +138,7 @@
 
  .border{
      border-radius: 8%;
-     width: 180px;
+     width: 200px;
  }
  .card-face {
    width: 100%;
@@ -173,3 +165,16 @@
   .flip-card-inner.is-flipped {
      transform: rotateY(180deg);
   }
+  @media screen and (max-width:1280px ) {
+
+   .border{
+      width: 150px;
+   }
+   }
+
+   @media screen and (min-width:2048px ) {
+
+   .border{
+      width: 250px;
+   }
+   }

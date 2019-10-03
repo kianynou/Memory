@@ -75,9 +75,26 @@ playElt.addEventListener("click", function(){
     if(!isNaN(cardsNumberChoice) && !isNaN(playersNumberChoice)){
         gameElt.style.display = 'flex';
         askForNumberElt.style.display = "none";
-        randomDisplay(cardsNumberChoice);}
+        randomDisplay(cardsNumberChoice)}
     else{
         alert('Euh, tu peux choisir tes options comme y faut steu\'plait ?');}
+    if (cardsNumberChoice == 6) {
+        cardsElt.style.display = "grid";
+        cardsElt.style.gridTemplateColumns = "1fr 1fr 1fr";
+        cardsElt.style.gridTemplateRows = "1fr 1fr";
+    } else if (cardsNumberChoice == 8 || cardsNumberChoice == 12 || cardsNumberChoice == 16) {
+        cardsElt.style.display = "grid";
+        cardsElt.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
+        cardsElt.style.gridTemplateRows = "1fr 1fr";
+    } else if (cardsNumberChoice == 20) {
+        cardsElt.style.display = "grid";
+        cardsElt.style.gridTemplateColumns = "1fr 1fr 1fr 1fr 1fr";
+        cardsElt.style.gridTemplateRows = "1fr 1fr";
+    } else if (cardsNumberChoice == 4){
+        cardsElt.style.display = "grid";
+        cardsElt.style.gridTemplateColumns = "1fr 1fr";
+        cardsElt.style.gridTemplateRows = "1fr 1fr";
+    }
 }); 
 
 
