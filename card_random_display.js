@@ -27,7 +27,6 @@ class Player{
         return score+=1
     }
 }
-
 const player1 = new Player(true);
 const player2 = new Player(false);
 
@@ -36,6 +35,8 @@ let scorePlayer2Elt = document.getElementById('scorePlayer2');
 
 let frameScore1Elt = document.getElementById('frameScore1');
 let frameScore2Elt = document.getElementById('frameScore2');
+let frameCounterElt = document.getElementById('frameCounter');
+let lonelyElt = document.getElementById('lonely');
 
 let turnCounterElt = document.getElementById('turn');
 turnCounter = 0;
@@ -52,7 +53,8 @@ let playersNumberChoice;
 howManyPlayersElt.addEventListener("change", function(){
     if(event.target.value){
         playersNumberChoice = event.target.value;
-        return playersNumberChoice;}
+        return playersNumberChoice;
+        }
 });
     
 //How many cards ?? ----------------------------------------
@@ -62,7 +64,6 @@ let cardsNumberChoice;
 howManyCardsElt.addEventListener("change", function(){
     if(event.target.value){
     cardsNumberChoice = event.target.value;
-    //randomDisplay(cardsNumberChoice);
     return cardsNumberChoice ;}
     
 }); 
@@ -75,14 +76,16 @@ playElt.addEventListener("click", function(){
     if(!isNaN(cardsNumberChoice) && !isNaN(playersNumberChoice)){
         gameElt.style.display = 'flex';
         askForNumberElt.style.display = "none";
-        randomDisplay(cardsNumberChoice);}
+        console.log(playersNumberChoice);
+        randomDisplay(cardsNumberChoice, playersNumberChoice);
+        }
     else{
         alert('Euh, tu peux choisir tes options comme y faut steu\'plait ?');}
 }); 
 
 
 // Random display -------------------------------------------
-function randomDisplay(cardsNumber){
+function randomDisplay(cardsNumber,playersNumber){
 
     let randomNumbers =[];
 
@@ -117,8 +120,17 @@ function randomDisplay(cardsNumber){
         
     }
 
-    //Colored Frame Player 1 display
-    frameScore1Elt.style.backgroundColor = "#78f875";
+    //1 or 2 players display
+    if(playersNumber === '1'){
+        frameScore2Elt.style.display = "none";
+        lonelyElt.innerHTML = 'Your score';
+    }
+    else{
+        frameScore2Elt.style.display = "initial";
+        frameCounterElt.style.display = "none";
+        frameScore1Elt.style.backgroundColor = "#78f875";}
+
+    
 
         
         
