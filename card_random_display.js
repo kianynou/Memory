@@ -29,6 +29,7 @@ class Player{
 }
 const player1 = new Player(true);
 const player2 = new Player(false);
+let alone = true;
 
 let scorePlayer1Elt = document.getElementById('scorePlayer1');
 let scorePlayer2Elt = document.getElementById('scorePlayer2');
@@ -144,7 +145,8 @@ function randomDisplay(cardsNumber,playersNumber){
     else{
         frameScore2Elt.style.display = "initial";
         frameCounterElt.style.display = "none";
-        frameScore1Elt.style.backgroundColor = "#78f875";}
+        frameScore1Elt.style.backgroundColor = "#78f875";
+        alone = false;}
 
     
 
@@ -208,7 +210,7 @@ for (let i=0; i<cardsNumberChoice; i++) {
             setTimeout(function(){alertWinner.style.display ="none"}, 1300);
             cardinnerArray = []; 
 
-            if(player1.isPlaying=== true){
+            if(player1.isPlaying || alone){
                 player1.score += 1;
             }
             else{
@@ -221,7 +223,7 @@ for (let i=0; i<cardsNumberChoice; i++) {
             setTimeout(flipBack, 1900);
             setTimeout(alertLooser.style.display ="block", 1600);
             setTimeout(function(){alertLooser.style.display ="none"}, 1300);
-                     
+            if(!alone){         
             if(player1.isPlaying){
                 player1.isPlaying = false;
                 player2.isPlaying = true;
@@ -232,6 +234,7 @@ for (let i=0; i<cardsNumberChoice; i++) {
                 player2.isPlaying = false;
                 frameScore1Elt.style.backgroundColor = "#78f875";
                 frameScore2Elt.style.backgroundColor = "#D6EAF8";}
+            }
             }
             srcImgTab = [];
                 
