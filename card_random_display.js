@@ -27,7 +27,6 @@ class Player{
         return score+=1
     }
 }
-
 const player1 = new Player(true);
 const player2 = new Player(false);
 
@@ -36,6 +35,8 @@ let scorePlayer2Elt = document.getElementById('scorePlayer2');
 
 let frameScore1Elt = document.getElementById('frameScore1');
 let frameScore2Elt = document.getElementById('frameScore2');
+let frameCounterElt = document.getElementById('frameCounter');
+let lonelyElt = document.getElementById('lonely');
 
 let turnCounterElt = document.getElementById('turn');
 turnCounter = 0;
@@ -52,7 +53,8 @@ let playersNumberChoice;
 howManyPlayersElt.addEventListener("change", function(){
     if(event.target.value){
         playersNumberChoice = event.target.value;
-        return playersNumberChoice;}
+        return playersNumberChoice;
+        }
 });
     
 //How many cards ?? ----------------------------------------
@@ -62,7 +64,6 @@ let cardsNumberChoice;
 howManyCardsElt.addEventListener("change", function(){
     if(event.target.value){
     cardsNumberChoice = event.target.value;
-    //randomDisplay(cardsNumberChoice);
     return cardsNumberChoice ;}
     
 }); 
@@ -75,7 +76,8 @@ playElt.addEventListener("click", function(){
     if(!isNaN(cardsNumberChoice) && !isNaN(playersNumberChoice)){
         gameElt.style.display = 'flex';
         askForNumberElt.style.display = "none";
-        randomDisplay(cardsNumberChoice)}
+        randomDisplay(cardsNumberChoice, playersNumberChoice);
+        }
     else{
         alert('Euh, tu peux choisir tes options comme y faut steu\'plait ?');}
     if (cardsNumberChoice == 6) {
@@ -99,7 +101,7 @@ playElt.addEventListener("click", function(){
 
 
 // Random display -------------------------------------------
-function randomDisplay(cardsNumber){
+function randomDisplay(cardsNumber,playersNumber){
 
     let randomNumbers =[];
 
@@ -134,8 +136,17 @@ function randomDisplay(cardsNumber){
         
     }
 
-    //Colored Frame Player 1 display
-    frameScore1Elt.style.backgroundColor = "#78f875";
+    //1 or 2 players display
+    if(playersNumber === '1'){
+        frameScore2Elt.style.display = "none";
+        lonelyElt.innerHTML = 'Your score';
+    }
+    else{
+        frameScore2Elt.style.display = "initial";
+        frameCounterElt.style.display = "none";
+        frameScore1Elt.style.backgroundColor = "#78f875";}
+
+    
 
         
         
@@ -144,6 +155,15 @@ function randomDisplay(cardsNumber){
     
 
 // THE GAME ! ------------------------------------------------
+let alertWinner = document.getElementById("alert2");
+let alertLooser = document.getElementById("alert1");
+
+function openWin() {
+    var myWindow = window.open("", "myWindow", "width=200, height=100");
+    myWindow.document.write("<p>This is 'myWindow'</p>");
+    
+  }
+
 let cardinnerElt = [];
 let cardinnerArray = [];
 
@@ -157,6 +177,18 @@ function flipBack () {
     cardinnerArray[1].classList.toggle('is-flipped');
     cardinnerArray = [];  
 }
+function notTheSameCard() {
+    if (cardinnerArray[0] === cardinnerArray[1]) {
+        cardinnerArray = [];
+        srcImgTab = [];
+        alert(`You can't select two times the same card`);
+    }
+}
+function isItOver () {
+    if (player1.score + player2.score === cardsNumberChoice / 2) {
+        setTimeout(alert, 600, 'You finished the game');
+    }
+}
 
 for (let i=0; i<cardsNumberChoice; i++) {
     cardinnerElt[i].addEventListener('click', function() {
@@ -164,6 +196,7 @@ for (let i=0; i<cardsNumberChoice; i++) {
     let srcImg = document.getElementById('card'+i).src;
     cardinnerArray.push(cardinnerElt[i]);
     srcImgTab.push(srcImg);
+    notTheSameCard();
 
     // 2 cards returned
     if(srcImgTab.length===2){
@@ -171,7 +204,8 @@ for (let i=0; i<cardsNumberChoice; i++) {
         
         //If the same
         if(srcImgTab[0]===srcImgTab[1]){
-            setTimeout(alert, 500,'Ça trou l\'cul!');
+            setTimeout(alertWinner.style.display ="block", 1600);
+            setTimeout(function(){alertWinner.style.display ="none"}, 1300);
             cardinnerArray = []; 
 
             if(player1.isPlaying=== true){
@@ -180,11 +214,13 @@ for (let i=0; i<cardsNumberChoice; i++) {
             else{
                 player2.score += 1;
             }
+        isItOver();
         }
         //If not the same          
         else{
-            setTimeout(flipBack, 1000);
-            setTimeout(alert, 500,'Gros naze!');
+            setTimeout(flipBack, 1900);
+            setTimeout(alertLooser.style.display ="block", 1600);
+            setTimeout(function(){alertLooser.style.display ="none"}, 1300);
                      
             if(player1.isPlaying){
                 player1.isPlaying = false;
