@@ -127,6 +127,15 @@ function randomDisplay(cardsNumber){
     
 
 // THE GAME ! ------------------------------------------------
+let alertWinner = document.getElementById("alert2");
+let alertLooser = document.getElementById("alert1");
+
+function openWin() {
+    var myWindow = window.open("", "myWindow", "width=200, height=100");
+    myWindow.document.write("<p>This is 'myWindow'</p>");
+    
+  }
+
 let cardinnerElt = [];
 let cardinnerArray = [];
 
@@ -154,7 +163,8 @@ for (let i=0; i<cardsNumberChoice; i++) {
         
         //If the same
         if(srcImgTab[0]===srcImgTab[1]){
-            setTimeout(alert, 500,'Ça trou l\'cul!');
+            setTimeout(alertWinner.style.display ="block", 1600);
+            setTimeout(function(){alertWinner.style.display ="none"}, 1300);
             cardinnerArray = []; 
 
             if(player1.isPlaying=== true){
@@ -166,8 +176,9 @@ for (let i=0; i<cardsNumberChoice; i++) {
         }
         //If not the same          
         else{
-            setTimeout(flipBack, 1000);
-            setTimeout(alert, 500,'Gros naze!');
+            setTimeout(flipBack, 1900);
+            setTimeout(alertLooser.style.display ="block", 1600);
+            setTimeout(function(){alertLooser.style.display ="none"}, 1300);
                      
             if(player1.isPlaying){
                 player1.isPlaying = false;
