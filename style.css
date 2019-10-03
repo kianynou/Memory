@@ -18,6 +18,14 @@
     height: 100vh;
     font-family: 'grobold';
  }
+ h1{
+   text-align: center;
+   border: solid 3px#e23940;
+   border-radius: 8px;
+   background-color: white;
+   width : 70%;
+   margin: auto;
+ }
  h2{
     color: #ff8100;
     padding: 5px;
