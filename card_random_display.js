@@ -30,6 +30,7 @@ class Player{
 const player1 = new Player(true);
 const player2 = new Player(false);
 let alone = true;
+let winner;
 
 let scorePlayer1Elt = document.getElementById('scorePlayer1');
 let scorePlayer2Elt = document.getElementById('scorePlayer2');
@@ -45,8 +46,11 @@ turnCounter = 0;
 // Welcome display
 let welcomeElt = document.getElementById('welcome');
 let gameElt = document.getElementById('game');
+let finishElt = document.getElementById('finish');
+let finishDigestElt = document.getElementById('finishDigest');
 
 gameElt.style.display = 'none';
+finishElt.style.display ='none';
 //How many players ??  -------------------------------------
 
 let howManyPlayersElt = document.getElementById("howManyPlayers");
@@ -186,9 +190,42 @@ function notTheSameCard() {
         alert(`You can't select two times the same card`);
     }
 }
+function whoWins(){
+    if(player1.score > player2.score){
+        winner = 'player1';
+    }
+    else if(player1.score < player2.score){
+        winner = 'player2';
+    }
+    else{
+        winner = 'to both of you';
+    }
+    return winner;
+}
 function isItOver () {
     if (player1.score + player2.score === cardsNumberChoice / 2) {
-        setTimeout(alert, 600, 'You finished the game');
+        gameElt.style.display = 'none';
+        finishElt.style.display = 'block';
+
+        if(alone){
+            finishDigestElt.innerHTML = `<div id="finalalone"><h5>Congrats !</h5><br><h6>You did it in ${turnCounter} laps !</h6></div>
+                                        <div class="button1" href="index.html">
+                                         <a class="button" href="index.html">Home</a>
+                                        </div>`; 
+        }
+        else{
+            finishDigestElt.innerHTML = `<div><h5>Congrats ${whoWins()} !</h5></div>
+                                         <div id="finalScores">
+                                            <div class="final"><h6>Player 1 score :<br><br>${player1.score}</h6></div>
+                                            <div class="final"><h6>Player 2 score :<br><br>${player2.score}</h6></div>
+                                         </div>
+                                         <div class="button1" href="index.html">
+                                            <a class="button" href="index.html">Home</a>
+                                        </div>`
+
+        }
+        
+
     }
 }
 

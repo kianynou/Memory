@@ -33,6 +33,17 @@
  h3{
     padding-top: 30px;
  }
+ h4{
+    font-size: 3em;
+    text-align: center;
+ }
+ h5{
+    font-size: 4em;
+    color: #e23940;
+ }
+ h6{
+    font-size: 2em;
+ }
  p{
     font-size: 50px;
     color: #ff8100;
@@ -185,6 +196,41 @@
   .flip-card-inner.is-flipped {
      transform: rotateY(180deg);
   }
+  #finalDiv{
+     margin-top: 50px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+  }
+  #finish{
+   text-align: center;
+   padding : 20px;
+   border: solid 8px#e23940;
+   border-radius: 15px;
+   width : 800px;
+   margin: auto;
+   background-color: rgba(255,255,255,0.6);
+  }
+  #finishDigest{
+     padding-top: 20px;
+     margin : 20px 0;
+  }
+  #finalScores{
+   display : flex;
+   justify-content: space-around;
+   margin : 20px 0;
+}
+#finalalone{
+   margin-bottom: 30px;
+}
+.final{
+   padding : 20px;
+   margin : 20px 0;
+   border : 6px #e23940 solid;
+   border-radius : 8px;
+   background-color: #ff8100;
+}
   @media screen and (max-width:1280px ) {
 
    .border{
