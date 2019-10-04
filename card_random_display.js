@@ -194,6 +194,15 @@ function isItOver () {
         setTimeout(alert, 600, 'You finished the game');
     }
 }
+function cannotFlipAgain () {
+    for (let k = 0; k < cardinnerArray.length; k++) {
+        for (let j=0; j < cardinnerElt.length; j++) {
+            if (cardinnerElt[j] === cardinnerArray[k] ) {
+                cardinnerElt.splice(j, 1, '');
+            }
+        }
+    } 
+}
 
 for (let i=0; i<cardsNumberChoice; i++) {
     cardinnerElt[i].addEventListener('click', function() {
@@ -211,6 +220,7 @@ for (let i=0; i<cardsNumberChoice; i++) {
         if(srcImgTab[0]===srcImgTab[1]){
             setTimeout(alertWinner.style.display ="block", 1600);
             setTimeout(function(){alertWinner.style.display ="none"}, 1300);
+            cannotFlipAgain();          
             cardinnerArray = []; 
 
             if(player1.isPlaying || alone){
