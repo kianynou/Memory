@@ -266,7 +266,7 @@ for (let i=0; i<cardsNumberChoice; i++) {
             else{
                 player2.score += 1;
             }
-        isItOver();
+            setTimeout(isItOver,1000);
         }
         //If not the same          
         else{
